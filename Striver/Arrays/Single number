@@ -1,0 +1,31 @@
+https://leetcode.com/problems/single-number/submissions/1278384039/
+
+
+BRUTE FORCE:
+O(N^2)
+2 loops lenge, first element loge ,usko saare array elemsts se compare karoge uska count nikalne ke liye. Similarly saare elements ke liye ham karenge fir check karenge ki jiska count 1 aaya woh hoga answer.
+
+https://www.youtube.com/watch?v=bYWLJb3vCWY&t=1124s
+
+BETTER APPROACH:
+
+using Hashing for normal positive numbers
+using map for negative or large numbers of size 10^9 or 10^12
+PLEASE REFER VIDEO FOR EXTREME CLARITY
+
+OPTIMAL APPROACH:
+
+Using Xorr !!
+As 2 XOR 2=0  SAME_NO XOR SAME_NO=0, and 
+As 0 XOR NUMBER= NUMBER
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int xorr=0;
+        for (int i=0;i<nums.size();i++){
+            xorr=xorr^nums[i];
+        }
+        return xorr;
+    }
+};

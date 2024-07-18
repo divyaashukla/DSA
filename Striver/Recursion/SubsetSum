@@ -1,0 +1,28 @@
+https://www.geeksforgeeks.org/problems/subset-sums2234/1
+
+
+class Solution {
+  public:
+  void func(int i,int sum,vector<int> arr, int n,vector<int>&subset){
+            if(i>=n){
+            subset.push_back(sum);
+            return;
+        }
+        sum+=arr[i];
+        func(i+1,sum,arr,n,subset);
+        sum-=arr[i];
+        func(i+1,sum,arr,n,subset);
+        
+        }
+    vector<int> subsetSums(vector<int> arr, int n) {
+        vector<int> subset;
+        func(0,0,arr,n,subset);
+        sort(subset.begin(),subset.end());
+        return subset;
+        
+        
+    }
+};
+
+TC-O(2^n)
+SC-O(2^n)

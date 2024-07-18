@@ -1,0 +1,26 @@
+https://www.geeksforgeeks.org/problems/geek-jump/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=geek-jump
+
+
+
+*recursion->memoization->Tabulation
+*second jump=INT_MAX ***** (if 1 step is only there to jump then it doesnt enter if section for right *execution thus to compare it is given so)
+*taking index from 0 thus answer will be stored in (n-1) index
+
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+  public:
+    int minimumEnergy(vector<int>& height, int n) {
+        vector<int> dp(n,-1);
+        dp[0]=0;
+        for(int ind=1;ind<n;ind++){
+            int right=INT_MAX;
+            int left=dp[ind-1]+abs(height[ind]-height[ind-1]);
+            if(ind>1){
+                right=dp[ind-2]+abs(height[ind]-height[ind-2]);
+            }
+            dp[ind]=min(left,right);
+        }
+        return dp[n-1];
+    }
+};

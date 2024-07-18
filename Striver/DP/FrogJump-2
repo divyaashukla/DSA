@@ -1,0 +1,32 @@
+https://www.geeksforgeeks.org/problems/minimal-cost/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimal-cost
+
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+class Solution {
+  public:
+    int minimizeCost(vector<int>& height, int n, int k) {
+        // Code here
+        vector<int> dp(n+1,-1);
+        dp[0]=0;
+        for(int i=1;i<n;i++){
+            int mmstep=INT_MAX;
+            for(int j=1;j<=k;j++){
+                if((i-j)>=0){
+                    int jump=dp[i-j]+abs(height[i]-height[i-j]);
+                    mmstep=min(mmstep,jump);
+                }
+            }
+            dp[i]=mmstep;
+        }
+        return dp[n-1];
+        
+    }
+};
+
+DETAILED SOLUTION:
+
+https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/

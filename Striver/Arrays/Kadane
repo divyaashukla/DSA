@@ -1,0 +1,47 @@
+https://leetcode.com/problems/maximum-subarray/
+
+
+when lowest can be -ve
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int s=0, maxs=INT_MIN;
+        for(int i=0;i<nums.size();i++){
+            if(s>=0)
+            s+=nums[i];
+            else{
+                s=nums[i];
+            }
+            maxs=max(maxs,s);
+        }
+        return maxs;
+
+        
+    }
+};
+
+when lowest cant be -ve, i.e, 
+
+long long maxSubarraySum(int arr[], int n) {
+    long long maxi = LONG_MIN; // maximum sum
+    long long sum = 0;
+    int ansstart=ansend=-1;
+
+    for (int i = 0; i < n; i++) {
+        if(start==0)
+        int start=i;
+
+        sum += arr[i];
+
+        if (sum > maxi) {
+            maxi = sum;
+            ansstart=start;
+            ansend=i;
+        }
+
+        // If sum < 0: discard the sum calculated
+        if (sum < 0) {
+            sum = 0;
+        }
+    }
